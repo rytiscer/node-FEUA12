@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const data = require('./data');
 const dotenv = require('dotenv');
+const data = require('./data');
+
 dotenv.config();
 const app = express();
 app.use(cors());
