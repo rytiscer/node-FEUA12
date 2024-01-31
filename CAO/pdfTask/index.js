@@ -18,3 +18,52 @@ const data = require("./data");
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const port = 3003;
+//1
+app.get("/data", (req, res) => {
+  res.send(data);
+});
+//4
+app.get("/data/items", (req, res) => {
+  console.log(data); // Spausdiname visą duomenų masyvą
+  const items = data.map((item) => item.name);
+  console.log(items); // Spausdiname pavadinimus
+  res.send(items);
+});
+//3
+app.get("/data/:id", (req, res) => {
+  const itemId = +req.params.id;
+  const foundItem = data.find((item) => item.id === itemId);
+  console.log(foundItem);
+  res.send(foundItem);
+});
+
+//2
+app.get("/data/:categoryName", (req, res) => {
+  const { categoryName } = req.params;
+  const filteredData = data.filter((item) => {
+    const firstWord = item.category.split(" ")[0];
+    return firstWord.toLowerCase() === categoryName.toLowerCase();
+  });
+  console.log(filteredData);
+  res.send(filteredData);
+});
+//5
+app.get("/data/stock/:quantity", (req, res) => {
+  const quantityThreshold = parseInt(req.params.quantity, 10);
+
+  if (isNaN(quantityThreshold)) {
+    return res.status(400).send("Nurodykite tinkamą kiekį.");
+  }
+
+  const lowStockItems = data
+    .filter((item) => item.stock < quantityThreshold)
+    .map((item) => ({ name: item.name, stock: item.stock }));
+
+  res.send(lowStockItems);
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on ${port} port`);
+});
