@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="../index.js"></script>
+  </head>
+  <body>
+    <form id="form">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" />
+      <label for="lastName">Last Name:</label>
+      <input type="text" name="lastName" id="lastName" />
+      <button type="submit" id="button">Submit</button>
+    </form>
+    <ul id="userList"></ul>
+    <script>
+      document
+        .getElementById("form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const surname = document.getElementById("lastName").value;
+
+          fetch("http://localhost:3000/addUser", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, surname }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // Atnaujinamas unordered list su naujais vartotojais
+              const userList = document.getElementById("userList");
+              userList.innerHTML = "";
+
+              data.forEach((user) => {
+                const listItem = document.createElement("li");
+                listItem.textContent = user.name + " " + user.surname;
+                userList.appendChild(listItem);
+              });
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+
+      // Atvaizduojamas vartotojų sąrašas gautas iš serverio
+      fetch("http://localhost:3000/users")
+        .then((response) => response.json())
+        .then((data) => {
+          const userList = document.getElementById("userList");
+
+          data.forEach((user) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = user.name + " " + user.surname;
+            userList.appendChild(listItem);
+          });
+        })
+        .catch((error) => console.error("Error:", error));
+    </script>
+  </body>
+</html>
