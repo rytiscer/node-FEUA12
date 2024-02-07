@@ -9,8 +9,7 @@ app.use(cors());
 
 const port = process.env.PORT || 8080;
 
-const URI =
-  "mongodb+srv://admin:admin@cluster0.jdz8luo.mongodb.net/?retryWrites=true&w=majority";
+const URI = process.env.DB_CONNECTION_STRING;
 
 const client = new MongoClient(URI);
 //suranda ir grazina visus elementus is mongoDB

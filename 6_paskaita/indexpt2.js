@@ -9,8 +9,7 @@ app.use(cors());
 
 const port = process.env.PORT || 8080;
 
-const URI =
-  "mongodb+srv://admin:admin@cluster0.jdz8luo.mongodb.net/?retryWrites=true&w=majority";
+const URI = process.env.DB_CONNECTION_STRING;
 
 const client = new MongoClient(URI);
 
@@ -109,35 +108,6 @@ app.delete("/users/:id", async (req, res) => {
     res.status(500).send({ error: err.message });
   }
 });
-
-// app.post("/newStudent", async (req, res) => {
-//   try {
-//     const con = await client.connect();
-//     const dbRes = await con.db("demo1").collection("students").insertOne({
-//       vardas: "Jonas",
-//       pavarde: "Makaronas",
-//       amzius: 22,
-//       universitetas: "MRU",
-//     });
-//     await con.close();
-//     return res.send(dbRes);
-//   } catch (err) {
-//     res.status(500).send({ err });
-//   }
-// });
-
-// // .insertOne(body); - prideda vieną elementą
-// app.post("/", async (req, res) => {
-//   try {
-//     const newCar = req.body;
-//     const con = await client.connect(); // same
-//     const dbRes = await con.db("demo1").collection("cars").insertOne(newCar);
-//     await con.close(); // same
-//     res.send(dbRes); // same
-//   } catch (err) {
-//     res.status(500).send({ err }); // same
-//   }
-// });
 
 app.listen(port, () => {
   console.log(`Server is running on ${port} port`);
