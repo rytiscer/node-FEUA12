@@ -1,0 +1,25 @@
+body
+{
+    background-color: #edf2f6;
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color: white;
+    display: flex;
+justify-content: center;
+
+}
+header button {
+    border: none;
+    outline: none;
+    background-color: white;
+    margin: 0 5px;
+  }
+  .item
+  {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    text-align: center;
+  }
