@@ -3,23 +3,127 @@ body
     background-color: #edf2f6;
     margin: 0;
     padding: 0;
+    font-family: "Open Sans", sans-serif;
+
+}
+main
+{
+  padding-left: 10%;
+  padding-right: 10%;
 }
 header{
     background-color: white;
     display: flex;
-justify-content: center;
-
+    justify-content: center;
+    padding: 15px;
 }
-header button {
-    border: none;
-    outline: none;
-    background-color: white;
-    margin: 0 5px;
-  }
-  .item
+#membershipsContainer
+{
+  display: flex;
+  flex-wrap: wrap; /* Leidžia elementams peršokti į kitą eilutę, jei nebetelpa */
+  justify-content: space-between; /* Kad elementai būtų pasiskirstę tarpais horizontaliai */
+}
+.item {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centruoti elementą horizontaliai */
+  width: 400px;
+  height: 150px;
+  position: relative; /* Kad SVG būtų pozicionuojamas pagal šį elementą */
+}
+
+.price-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Centruoti elementą horizontaliai */
+  justify-content: center; /* Centruoti elementą vertikaliai */
+}
+
+.price, .name {
+  margin-bottom: 5px;
+}
+
+.description {
+  margin-bottom: 5px;
+  text-align: center; /* Aprašymas centre */
+}
+
+.deleteButton {
+  position: absolute;
+  bottom: 5px; /* Pasistumti nuo apačios */
+  right: 5px; /* Pasistumti į dešinę */
+  width: 20px; /* Nustatyti SVG dydį */
+  height: 20px;
+  cursor: pointer;
+}
+  .usersTop
   {
-    width: 200px;
-    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  .usersTop a
+  {
+    text-decoration: none;
+    background-color: #677dea;
+  }
+  header a{
+    text-decoration: none;
+    padding-left: 50px;
+  }
+
+  header a {
+    color: gray;
+  }
+  
+  header a.active {
+    color: #677dea;
+  }
+
+  .createUser
+  {
     background-color: white;
+    width: 100%;
+    height: 100%;
+  }
+  form {
+    max-width: 400px; /* Maksimalus plotis */
+    margin: 0 auto; /* Centruojame formą horizontaliai */
+  }
+  
+  .form-group {
+    margin-bottom: 20px; /* Atstumas tarp laukų */
+    display: flex; /* Stulpelių išdėstymo pakeitimas į horizontalų */
+    align-items: center; /* Center elements vertically */
+  }
+  
+  label {
+    width: 30%; /* Tinkinio pločio nustatymas */
+  }
+  
+  input,
+  button {
+    width: 70%; /* Tinkinio pločio nustatymas */
+    padding: 10px; /* Puslapio rėmelio viduje esančio turinio laisvas plotas */
+    margin-top: 5px; /* Atstumas nuo viršaus */
+  }
+  
+  .form-buttons {
+    display: flex; /* Stulpelių išdėstymo pakeitimas į horizontalų */
+    justify-content: space-between; /* Pritaikome vienodą tarpą tarp mygtukų */
+  }
+
+  footer
+  {
     text-align: center;
+    color: black;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }

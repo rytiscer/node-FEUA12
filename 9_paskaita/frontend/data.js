@@ -9,13 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Create HTML element with membership information
         const itemHTML = `
-            <div class="item">
-              <div class="name">${membership.name}</div>
-              <div class="price">${formattedPrice}</div>
-              <div class="description">${membership.description}</div>
-              <button class="deleteButton" data-id="${membership._id}">Delete</button>
-            </div>
-          `;
+        <div class="item">
+          <div class="price-name">
+            <div class="price">${formattedPrice}</div>
+            <div class="name">${membership.name}</div>
+          </div>
+          <div class="description">${membership.description}</div>
+          <img class="deleteButton" src="assets/trash.png" alt="Delete button" data-id="${membership._id}">
+        </div>
+      `;
         // Insert HTML into memberships container
         document
           .getElementById("membershipsContainer")
@@ -49,5 +51,43 @@ document.addEventListener("DOMContentLoaded", function () {
           // Optionally, display an error message to the user
         });
     }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const membershipsContainer = document.getElementById("selectMembership");
+
+  fetch("http://localhost:8080/memberships")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((service) => {
+        const option = document.createElement("option");
+        option.value = service._id;
+        option.textContent = service.name;
+        membershipsContainer.appendChild(option);
+      });
+    })
+    .catch((err) => console.error("Klaida:", err));
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  let membershipsLink = document.getElementById("membershipsLink");
+  let usersLink = document.getElementById("usersLink");
+
+  // Patikriname, ar esame index.html ir paryškiname tinkamą nuorodą
+  if (window.location.pathname === "/index.html") {
+    membershipsLink.classList.add("active");
+  } else if (window.location.pathname === "/users.html") {
+    usersLink.classList.add("active");
+  }
+
+  membershipsLink.addEventListener("click", function () {
+    membershipsLink.classList.add("active");
+    usersLink.classList.remove("active");
+  });
+
+  usersLink.addEventListener("click", function () {
+    usersLink.classList.add("active");
+    membershipsLink.classList.remove("active");
   });
 });

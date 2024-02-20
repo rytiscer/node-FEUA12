@@ -4,24 +4,78 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script defer src="data.js "></script>
+    <script defer src="style.css"></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Put your CSS styles here if needed */
+    </style>
   </head>
   <body>
     <header>
-      <button>Memberships</button>
-      <button>Users</button>
+      <a href="index.html" id="membershipsLink">Memberships</a>
+      <a href="users.html" id="usersLink" class="active">Users</a>
     </header>
     <main>
-      <div class="top">
-        <h1>Membership Management</h1>
-        <p>
-          Here you can manage your membership packages. Note: Make sure you are
-          not deleting or deactivating packages assigned to active users.
-        </p>
+      <div class="usersTop">
+        <h1>User Management</h1>
+        <a href="create_user.html">New User</a>
       </div>
-      <div id="membershipsContainer"></div>
+      <div id="usersContainer"></div>
     </main>
     <footer>Copyright ©2024 Membership Manager</footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Fetch users from the server and display them
+        fetch("http://localhost:8080/users")
+          .then((response) => response.json())
+          .then((data) => {
+            data.forEach((user) => {
+              // Create HTML element with user information
+              const itemHTML = `
+                <div class="item">
+                    <div class="userName">${user.name}</div>
+                    <div class="userSurname">${user.surname}</div>
+                    <div class="userEmail">Email Address: ${user.email}</div>
+                    <div class="description">Membership: ${user.membership_name}</div> <!-- Update to use membership_name -->
+                </div>
+              `;
+              // Insert HTML into users container
+              document
+                .getElementById("usersContainer")
+                .insertAdjacentHTML("beforeend", itemHTML);
+            });
+          })
+          .catch((error) => {
+            console.error("Error fetching users:", error);
+            // Optionally, display an error message to the user
+          });
+
+        // Highlight the appropriate link based on the current page
+        let membershipsLink = document.getElementById("membershipsLink");
+        let usersLink = document.getElementById("usersLink");
+
+        if (window.location.pathname === "/index.html") {
+          membershipsLink.classList.add("active");
+        } else if (window.location.pathname === "/users.html") {
+          usersLink.classList.add("active");
+        }
+
+        membershipsLink.addEventListener("click", function () {
+          membershipsLink.classList.add("active");
+          usersLink.classList.remove("active");
+        });
+
+        usersLink.addEventListener("click", function () {
+          usersLink.classList.add("active");
+          membershipsLink.classList.remove("active");
+        });
+      });
+    </script>
   </body>
 </html>
