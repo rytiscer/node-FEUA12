@@ -26,7 +26,7 @@
         <label for="name">Name</label>
         <input type="text" name="name" id="name" />
         <label for="membershipPrice">Membership Price</label>
-        <input type="number" name="membershipPrice" id="membershipPrice" />
+        <input type="text" name="membershipPrice" id="membershipPrice" />
         <label for="description">Description</label>
         <input type="description" name="description" id="description" />
         <button type="button">Cancel</button>
@@ -34,5 +34,43 @@
       </form>
     </main>
     <footer>Copyright ©2024 Membership Manager</footer>
+    <script>
+      // Paimkite nuorodą į mygtuką
+      let submit = document.getElementById("newMembership");
+
+      // Pridėkite event listener'į mygtukui
+      submit.addEventListener("click", function (event) {
+        let mName = document.getElementById("name").value;
+        let mPrice = document.getElementById("membershipPrice").value;
+        let mDescription = document.getElementById("description").value;
+
+        const data = {
+          name: mName,
+          price: mPrice,
+          description: mDescription,
+        };
+        fetch("http://localhost:8080/memberships", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json(); // Jei reikia, gaunate atsakymą iš serverio
+          })
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+
+        // Jei norite užkirsti kelią mygtuko numatytajam elgesiui, galite naudoti šią eilutę:
+      });
+    </script>
   </body>
 </html>

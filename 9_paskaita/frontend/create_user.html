@@ -55,11 +55,17 @@
         let fname = document.getElementById("fname").value;
         let lname = document.getElementById("lname").value;
         let email = document.getElementById("email").value;
+        const selectedIndex = selectMembership.selectedIndex;
+        const selectedOption = selectMembership.options[selectedIndex];
+        const selectedMembershipId = selectedOption.value;
+
+        console.log(selectedMembershipId);
 
         const data = {
           name: fname,
           surname: lname,
           email: email,
+          service_id: selectedMembershipId,
         };
         fetch("http://localhost:8080/users", {
           method: "POST",
@@ -82,7 +88,6 @@
           });
 
         // Jei norite užkirsti kelią mygtuko numatytajam elgesiui, galite naudoti šią eilutę:
-        event.preventDefault();
       });
     </script>
   </body>
