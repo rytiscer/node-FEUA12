@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const itemHTML = `
         <div class="item">
           <div class="price-name">
-            <div class="price">${formattedPrice}</div>
+            <div class="price">${formattedPrice}&nbsp</div>
             <div class="name">${membership.name}</div>
           </div>
           <div class="description">${membership.description}</div>

@@ -20,7 +20,7 @@
     </header>
     <main>
       <div class="top">
-        <h1>Create Membership</h1>
+        <h1>Create User</h1>
       </div>
       <form class="createUser" action="">
         <div class="form-group">
@@ -36,11 +36,11 @@
           <input type="email" name="email" id="email" />
         </div>
         <div class="form-group">
-          <label for="membership">Change Membership</label>
+          <label for="membership">Membership</label>
           <select id="selectMembership"></select>
         </div>
         <div class="form-buttons">
-          <button type="button" id="cancelUser">Cancel</button>
+          <button type="button" id="cancelButton">Cancel</button>
           <button type="submit" id="newUser">New User</button>
         </div>
       </form>
@@ -53,7 +53,7 @@
         let fname = document.getElementById("fname").value;
         let lname = document.getElementById("lname").value;
         let email = document.getElementById("email").value;
-        let cancelUser = document.getElementById("cancelUser");
+        let cancel = document.getElementById("cancelButton");
         const selectedIndex = selectMembership.selectedIndex;
         const selectedOption = selectMembership.options[selectedIndex];
         const selectedMembershipId = selectedOption.value;

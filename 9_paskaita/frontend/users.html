@@ -21,23 +21,35 @@
     <main>
       <div class="usersTop">
         <h1>User Management</h1>
-        <a href="create_user.html">New User</a>
+        <a href="create_user.html" class="newUser">+ New User</a>
       </div>
       <div id="usersContainer"></div>
     </main>
     <footer>Copyright ©2024 Membership Manager</footer>
     <script>
+      let randomIp =
+        Math.floor(Math.random() * 255) +
+        1 +
+        "." +
+        Math.floor(Math.random() * 255) +
+        "." +
+        Math.floor(Math.random() * 255) +
+        "." +
+        Math.floor(Math.random() * 255);
       document.addEventListener("DOMContentLoaded", function () {
         fetch("http://localhost:8080/users")
           .then((response) => response.json())
           .then((data) => {
             data.forEach((user) => {
               const itemHTML = `
-                <div class="item">
-                    <div class="userName">${user.name}</div>
+                <div class="userItem">
+                  <div class="nameSurname">
+                    <div class="userName">${user.name}&nbsp</div>
                     <div class="userSurname">${user.surname}</div>
+                  </div>
                     <div class="userEmail">Email Address: ${user.email}</div>
-                    <div class="description">Membership: ${user.membership_name}</div> <!-- Update to use membership_name -->
+                    <div class="userDescription">Membership: ${user.MembershipName}</div>
+                    <div class = "ip"> IP: ${randomIp} </div>
                 </div>
               `;
               document

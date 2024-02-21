@@ -54,7 +54,6 @@ app.delete("/memberships/:id", async (req, res) => {
 });
 
 app.get("/users", async (req, res) => {
-  const order = req.params.order;
   try {
     const con = await client.connect();
     const data = await con
@@ -72,6 +71,16 @@ app.get("/users", async (req, res) => {
             localField: "service_id",
             foreignField: "_id",
             as: "Membership",
+          },
+        },
+        {
+          $addFields: {
+            MembershipName: { $arrayElemAt: ["$Membership.name", 0] },
+          },
+        },
+        {
+          $project: {
+            Membership: 0, // Pašaliname Membership lauką, jei jis nebereikalingas
           },
         },
       ])
