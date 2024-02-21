@@ -29,16 +29,15 @@
         <input type="text" name="membershipPrice" id="membershipPrice" />
         <label for="description">Description</label>
         <input type="description" name="description" id="description" />
-        <button type="button">Cancel</button>
+        <button type="button" id="cancelButton">Cancel</button>
         <button type="submit" id="newMembership">New Membership</button>
       </form>
     </main>
     <footer>Copyright ©2024 Membership Manager</footer>
     <script>
-      // Paimkite nuorodą į mygtuką
       let submit = document.getElementById("newMembership");
+      let cancel = document.getElementById("cancelButton");
 
-      // Pridėkite event listener'į mygtukui
       submit.addEventListener("click", function (event) {
         let mName = document.getElementById("name").value;
         let mPrice = document.getElementById("membershipPrice").value;
@@ -60,7 +59,7 @@
             if (!response.ok) {
               throw new Error("Network response was not ok");
             }
-            return response.json(); // Jei reikia, gaunate atsakymą iš serverio
+            return response.json();
           })
           .then((data) => {
             console.log("Success:", data);
@@ -68,8 +67,10 @@
           .catch((error) => {
             console.error("Error:", error);
           });
+      });
 
-        // Jei norite užkirsti kelią mygtuko numatytajam elgesiui, galite naudoti šią eilutę:
+      cancel.addEventListener("click", (e) => {
+        window.location.href = "index.html";
       });
     </script>
   </body>

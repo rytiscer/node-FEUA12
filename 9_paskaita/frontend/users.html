@@ -12,9 +12,6 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
       rel="stylesheet"
     />
-    <style>
-      /* Put your CSS styles here if needed */
-    </style>
   </head>
   <body>
     <header>
@@ -31,12 +28,10 @@
     <footer>Copyright ©2024 Membership Manager</footer>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Fetch users from the server and display them
         fetch("http://localhost:8080/users")
           .then((response) => response.json())
           .then((data) => {
             data.forEach((user) => {
-              // Create HTML element with user information
               const itemHTML = `
                 <div class="item">
                     <div class="userName">${user.name}</div>
@@ -45,7 +40,6 @@
                     <div class="description">Membership: ${user.membership_name}</div> <!-- Update to use membership_name -->
                 </div>
               `;
-              // Insert HTML into users container
               document
                 .getElementById("usersContainer")
                 .insertAdjacentHTML("beforeend", itemHTML);
@@ -53,10 +47,8 @@
           })
           .catch((error) => {
             console.error("Error fetching users:", error);
-            // Optionally, display an error message to the user
           });
 
-        // Highlight the appropriate link based on the current page
         let membershipsLink = document.getElementById("membershipsLink");
         let usersLink = document.getElementById("usersLink");
 
