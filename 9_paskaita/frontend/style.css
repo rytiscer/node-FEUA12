@@ -102,33 +102,7 @@ header{
   header a.active {
     color: #677dea;
   }
-  form {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  form {
-    font-family: sans-serif;
-    margin: 20px auto;
-    width: 400px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: white;
-    min-width: 100%;
-    min-height: 500px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
+
   
   button {
     background-color: #0073b7;
@@ -152,27 +126,6 @@ header{
     background-color: #004167;
   }
   
-  .form-group {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  label {
-    width: 30%;
-  }
-  
-  input,
-  button {
-    width: 70%;
-    padding: 10px;
-    margin-top: 5px;
-  }
-  
-  .form-buttons {
-    display: flex;
-    justify-content: space-between;
-  }
 
   .newMembership
   {
@@ -208,8 +161,7 @@ header{
 
   #cancelButton
   {
-    background-color: #f7f7f7;
-    border: 1px solid #ddd;
+    background-color: white;
     border-radius: 4px;
     color: #333;
     font-family: sans-serif;
@@ -219,6 +171,8 @@ header{
     text-align: center;
     text-decoration: none;
     transition: 0.2s;
+    border: none;
+    font-weight: bold;
   }
   footer {
     text-align: center;
@@ -265,3 +219,55 @@ header{
     width: 35px;
     height: 35px;
   }
+
+  .createMembership {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Nustatoma, kad elementai būtų išdėstyti kairėje */
+  background-color: white;
+  padding: 50px;
+}
+
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* Pridedamas tarpas tarp mygtukų ir kitų elementų */
+}
+
+.buttons button {
+  margin: 0 5px; /* Pridedamas tarpas tarp mygtukų */
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  width: 150px; /* Nustatoma fiksuota label'o plotis */
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.form-group input {
+  flex: 1; /* Input'as užima visą likusią vietą */
+  padding: 5px;
+  width: 500px;
+}
+
+.form-group textarea
+{
+  min-width: 510px;
+  min-height: 200px;
+}
+
+.createUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  font-weight: bold;
+  padding: 50px;
+}
