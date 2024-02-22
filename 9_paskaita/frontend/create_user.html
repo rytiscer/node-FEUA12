@@ -40,7 +40,9 @@
           <select id="selectMembership"></select>
         </div>
         <div class="form-buttons">
-          <button type="button" id="cancelButton">Cancel</button>
+          <button type="button" id="cancelButton" class="cancelBtn">
+            Cancel
+          </button>
           <button type="submit" id="newUser">New User</button>
         </div>
       </form>
@@ -53,7 +55,7 @@
         let fname = document.getElementById("fname").value;
         let lname = document.getElementById("lname").value;
         let email = document.getElementById("email").value;
-        let cancel = document.getElementById("cancelButton");
+        let cancelUser = document.querySelector(".cancelBtn");
         const selectedIndex = selectMembership.selectedIndex;
         const selectedOption = selectMembership.options[selectedIndex];
         const selectedMembershipId = selectedOption.value;
@@ -87,7 +89,9 @@
           });
       });
 
+      console.log("Before click event");
       cancelUser.addEventListener("click", (e) => {
+        console.log("Inside click event");
         window.location.href = "users.html";
       });
     </script>

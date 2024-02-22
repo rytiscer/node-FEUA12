@@ -223,7 +223,7 @@ header{
   .createMembership {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Nustatoma, kad elementai būtų išdėstyti kairėje */
+  align-items: center;
   background-color: white;
   padding: 50px;
 }
@@ -232,11 +232,11 @@ header{
 .buttons {
   display: flex;
   justify-content: center;
-  margin-top: 10px; /* Pridedamas tarpas tarp mygtukų ir kitų elementų */
+  margin-top: 10px;
 }
 
 .buttons button {
-  margin: 0 5px; /* Pridedamas tarpas tarp mygtukų */
+  margin: 0 5px;
 }
 
 .form-group {
@@ -246,13 +246,13 @@ header{
 }
 
 .form-group label {
-  width: 150px; /* Nustatoma fiksuota label'o plotis */
+  width: 150px;
   margin-right: 10px;
   font-weight: bold;
 }
 
 .form-group input {
-  flex: 1; /* Input'as užima visą likusią vietą */
+  flex: 1;
   padding: 5px;
   width: 500px;
 }

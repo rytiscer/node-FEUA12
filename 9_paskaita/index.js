@@ -62,7 +62,7 @@ app.get("/users", async (req, res) => {
       .aggregate([
         {
           $addFields: {
-            service_id: { $toObjectId: "$service_id" }, // Convert service_id to ObjectId
+            service_id: { $toObjectId: "$service_id" },
           },
         },
         {
@@ -80,7 +80,7 @@ app.get("/users", async (req, res) => {
         },
         {
           $project: {
-            Membership: 0, // Pašaliname Membership lauką, jei jis nebereikalingas
+            Membership: 0,
           },
         },
       ])
