@@ -37,15 +37,6 @@ app.post("/pets", async (req, res) => {
   }
 });
 
-client.connect((err) => {
-  if (err) {
-    console.error("Failed to connect to MongoDB:", err);
-    return;
-  }
-  console.log("Connected to MongoDB");
-
-  // Start the Express server after successful connection
-  app.listen(port, () => {
-    console.log(`Server is running on ${port} port`);
-  });
+app.listen(port, () => {
+  console.log(`Server is running on ${port} port`);
 });

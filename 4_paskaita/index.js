@@ -15,9 +15,7 @@ app.get('/users', (req, res) => {
 // Sukurkite dinaminį GET route, kur URL turės automobilio markę ir pagal ją prafiltruos, ir grąžins tik tuos žmones, kurie turi šį automobilį.
 app.get('/users/car/:brand', (req, res) => {
   const { brand } = req.params;
-  const filteredUsers = data.filter(
-    (user) => user.car.toLowerCase() === brand.toLowerCase(),
-  );
+  const filteredUsers = data.filter((user) => user.car.toLowerCase() === brand.toLowerCase());
   console.log(filteredUsers);
   res.send(filteredUsers);
 });
@@ -29,11 +27,7 @@ app.get('/users/emails', (req, res) => {
 
 app.get('/users/females', (req, res) => {
   const newFemales = [];
-  const filteredUsers = data
-    .filter((user) => user.gender === 'Female')
-    .forEach((female) =>
-      newFemales.push(`${female.first_name} ${female.last_name}`),
-    );
+  const filteredUsers = data.filter((user) => user.gender === 'Female').forEach((female) => newFemales.push(`${female.first_name} ${female.last_name}`));
 
   // const filteredFemales = data.filer((user) => user.gender === "Female");
   // const fullNames = filteredFemales.map(
@@ -48,10 +42,8 @@ app.get('/users/:id', (req, res) => {
   const user = data.find((user) => user.id === id);
   res.send(user);
 });
-
 // Sukurkite GET route, į kurį pasikreipus, grąžins visų moterų (gender: Female) vardą ir pavardę
 // (formatas: ["Rita Kazlauskaite", "Monika Simaskaite"]).
-
 app.listen(port, () => {
   console.log(`Server is running on ${port} port`);
 });
