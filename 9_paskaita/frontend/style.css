@@ -25,7 +25,7 @@ header{
 }
 .item {
   background-color: #ffffff;
-  border: 1px solid #cccccc;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 10px;
   margin: 15px;
   margin-bottom: 15px;
@@ -188,7 +188,7 @@ header{
 
   .userItem {
     background-color: #ffffff;
-    border: 1px solid #cccccc;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     padding: 10px;
     margin: 15px;
     margin-bottom: 15px;
@@ -226,6 +226,7 @@ header{
   align-items: center;
   background-color: white;
   padding: 50px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 
@@ -270,4 +271,5 @@ header{
   background-color: white;
   font-weight: bold;
   padding: 50px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
